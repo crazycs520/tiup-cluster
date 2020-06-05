@@ -472,12 +472,13 @@ func (c *TiKVComponent) Instances() []Instance {
 	for _, s := range c.TiKVServers {
 		s := s
 		ins = append(ins, &TiKVInstance{instance{
-			InstanceSpec: s,
-			name:         c.Name(),
-			host:         s.Host,
-			port:         s.Port,
-			sshp:         s.SSHPort,
-			topo:         c.ClusterSpecification,
+			InstanceSpec:  s,
+			name:          c.Name(),
+			host:          s.Host,
+			listenAddress: s.ListenAddress,
+			port:          s.Port,
+			sshp:          s.SSHPort,
+			topo:          c.ClusterSpecification,
 
 			usedPorts: []int{
 				s.Port,
@@ -583,12 +584,13 @@ func (c *PDComponent) Instances() []Instance {
 		ins = append(ins, &PDInstance{
 			Name: s.Name,
 			instance: instance{
-				InstanceSpec: s,
-				name:         c.Name(),
-				host:         s.Host,
-				port:         s.ClientPort,
-				sshp:         s.SSHPort,
-				topo:         c.ClusterSpecification,
+				InstanceSpec:  s,
+				name:          c.Name(),
+				host:          s.Host,
+				listenAddress: s.ListenAddress,
+				port:          s.ClientPort,
+				sshp:          s.SSHPort,
+				topo:          c.ClusterSpecification,
 
 				usedPorts: []int{
 					s.ClientPort,
