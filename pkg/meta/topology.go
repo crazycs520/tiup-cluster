@@ -126,6 +126,7 @@ func AllComponentNames() (roles []string) {
 // TiDBSpec represents the TiDB topology specification in topology.yaml
 type TiDBSpec struct {
 	Host            string                 `yaml:"host"`
+	ListenAddress   string                 `yaml:"listen_address"`
 	SSHPort         int                    `yaml:"ssh_port,omitempty"`
 	Imported        bool                   `yaml:"imported,omitempty"`
 	Port            int                    `yaml:"port" default:"4000"`
